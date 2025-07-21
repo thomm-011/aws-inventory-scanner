@@ -1,38 +1,55 @@
-# aws-inventory-scanner
 
-## Descrição
-Script em Python para listar recursos ativos na AWS (EC2, S3, Lambda, RDS e usuários IAM) usando boto3.
 
-## Pré-requisitos
-- Python 3.x
-- boto3 (`pip install boto3`)
-- AWS CLI configurado (NUNCA inclua chaves no código!)
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/boto3-AWS-green?logo=amazon-aws" alt="boto3">
+</div>
 
-## Como usar
+# 🗂️ aws-inventory-scanner
 
-1. **Configure suas credenciais AWS** (se ainda não fez):
-   ```sh
-   aws configure
-   ```
-   Preencha com sua Access Key, Secret Key, região e formato de saída. As credenciais ficam salvas localmente (~/.aws/credentials) e NÃO devem ser incluídas no código.
+Script em Python para listar recursos ativos na AWS:
 
-2. **Salve o script**
-   - O script está no arquivo `listar_recursos.py`.
-
-3. **Instale as dependências**
-   ```sh
-   pip install boto3
-   ```
-
-4. **Execute o script**
-   ```sh
-   python listar_recursos.py
-   ```
-
-## Segurança
-- **NUNCA** inclua suas chaves de acesso (aws_access_key_id, aws_secret_access_key) no código ou em repositórios.
-- Use sempre o `aws configure` para gerenciar credenciais.
+<ul>
+  <li><strong>EC2</strong></li>
+  <li><strong>S3</strong></li>
+  <li><strong>Lambda</strong></li>
+  <li><strong>RDS</strong></li>
+  <li><strong>Usuários IAM</strong></li>
+</ul>
 
 ---
-Este projeto não armazena nem exibe dados sensíveis. Use com responsabilidade.
+
+## 🚀 Pré-requisitos
+
+- Python 3.x
+- boto3 (`pip install boto3`)
+- AWS CLI configurado
+
+---
+
+## ⚡ Como usar
+
+<ol>
+  <li>
+    <strong>Configure suas credenciais AWS</strong> (caso ainda não tenha):<br>
+    <pre><code>aws configure</code></pre>
+  </li>
+  <li>
+    <strong>Instale as dependências:</strong><br>
+    <pre><code>pip install boto3</code></pre>
+  </li>
+  <li>
+    <strong>Execute o script:</strong><br>
+    <pre><code>python listar_recursos.py</code></pre>
+  </li>
+</ol>
+
+---
+
+<details>
+<summary>O que o script faz?</summary>
+
+O script irá listar recursos <strong>EC2</strong>, <strong>S3</strong>, <strong>Lambda</strong>, <strong>RDS</strong> e <strong>usuários IAM</strong> da sua conta AWS diretamente no terminal.
+
+</details>
 
