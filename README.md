@@ -5,7 +5,18 @@
   <img src="https://img.shields.io/badge/boto3-AWS-green?logo=amazon-aws" alt="boto3">
 </div>
 
+
 # 🗂️ aws-inventory-scanner
+
+💡 **Por que esse projeto existe?**
+
+Imagine um cliente que acreditava ter domínio total sobre sua infraestrutura em nuvem. Tudo estava centralizado na região sa-east-1, como era o padrão da equipe. No entanto, um pequeno deslize durante um teste fez com que uma instância EC2 fosse criada em us-east-1 — e esquecida.
+
+Meses depois, um custo inesperado apareceu. Foi só então que descobriram essa instância rodando sozinha em uma região que nem fazia parte do dia a dia deles.
+
+Esse script nasceu justamente para evitar esse tipo de situação. De forma simples, ele varre as regiões, identifica os recursos ativos e permite agir antes que o custo apareça.
+
+---
 
 Script em Python para listar recursos ativos na AWS:
 
