@@ -1,6 +1,5 @@
 import boto3
 
-services = ['ec2', 's3', 'lambda', 'rds']
 all_resources = {}
 
 def add_resource(service, resource_id, extra=""):
@@ -37,11 +36,50 @@ def list_rds():
     for db in instances['DBInstances']:
         add_resource('rds', db['DBInstanceIdentifier'])
 
+
+def list_vpcs():
+    ec2 = boto3.client('ec2')
+    vpcs = ec2.describe_vpcs()
+    for vpc in vpcs['Vpcs']:
+        vpc_id = vpc['VpcId']
+        cidr = vpc.get('CidrBlock', '')
+        add_resource('vpc', vpc_id, cidr)
+
+def list_subnets():
+    ec2 = boto3.client('ec2')
+    subnets = ec2.describe_subnets()
+    for subnet in subnets['Subnets']:
+        subnet_id = subnet['SubnetId']
+        cidr = subnet.get('CidrBlock', '')
+        add_resource('subnet', subnet_id, cidr)
+
+def list_security_groups():
+    ec2 = boto3.client('ec2')
+    sgs = ec2.describe_security_groups()
+    for sg in sgs['SecurityGroups']:
+        sg_id = sg['GroupId']
+        name = sg.get('GroupName', '')
+        add_resource('security_group', sg_id, name)
+
 def list_iam_users():
     iam = boto3.client('iam')
     users = iam.list_users()
     for u in users['Users']:
-        add_resource('iam', u['UserName'])
+        add_resource('iam_user', u['UserName'])
+
+def list_iam_roles():
+    iam = boto3.client('iam')
+    paginator = iam.get_paginator('list_roles')
+    for page in paginator.paginate():
+        for role in page['Roles']:
+            add_resource('iam_role', role['RoleName'])
+
+def list_iam_policies():
+    iam = boto3.client('iam')
+    paginator = iam.get_paginator('list_policies')
+    for page in paginator.paginate(Scope='Local'):
+        for policy in page['Policies']:
+            add_resource('iam_policy', policy['PolicyName'])
 
 # Não inclua chaves ou segredos no código! Use aws configure para definir suas credenciais.
 
@@ -49,7 +87,12 @@ list_ec2()
 list_s3()
 list_lambda()
 list_rds()
+list_vpcs()
+list_subnets()
+list_security_groups()
 list_iam_users()
+list_iam_roles()
+list_iam_policies()
 
 print("\nRecursos encontrados na conta:")
 for service, resources in all_resources.items():
