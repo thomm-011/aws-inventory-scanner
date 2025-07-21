@@ -1,4 +1,7 @@
+
 import boto3
+import json
+import csv
 
 all_resources = {}
 
@@ -94,8 +97,24 @@ list_iam_users()
 list_iam_roles()
 list_iam_policies()
 
+
 print("\nRecursos encontrados na conta:")
 for service, resources in all_resources.items():
     print(f"\n{service.upper()} ({len(resources)}):")
     for res in resources:
         print(f"  - {res}")
+
+# Exportar para JSON
+with open("recursos_aws.json", "w", encoding="utf-8") as f_json:
+    json.dump(all_resources, f_json, ensure_ascii=False, indent=2)
+
+# Exportar para CSV
+with open("recursos_aws.csv", "w", newline='', encoding="utf-8") as f_csv:
+    writer = csv.writer(f_csv)
+    writer.writerow(["servico", "id", "extra"])
+    for service, resources in all_resources.items():
+        for res in resources:
+            parts = res.split(' ', 1)
+            resource_id = parts[0]
+            extra = parts[1] if len(parts) > 1 else ""
+            writer.writerow([service, resource_id, extra])
