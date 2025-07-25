@@ -57,7 +57,7 @@ Script em Python para listar recursos ativos na AWS:
   </li>
   <li>
     <strong>Execute o script:</strong><br>
-    <pre><code>python listar_recursos.py</code></pre>
+    <pre><code>python3 listar_recursos.py</code></pre>
     <br>
     <em>Ao finalizar, os recursos serão exportados automaticamente para os arquivos <code>recursos_aws.json</code> e <code>recursos_aws.csv</code> na mesma pasta do script.</em>
   </li>
