@@ -32,6 +32,18 @@ Script em Python para listar recursos ativos na AWS:
   <li><strong>Usuários IAM</strong></li>
   <li><strong>Roles IAM</strong></li>
   <li><strong>Policies IAM</strong></li>
+  <li><strong>Elastic Load Balancers (ELB/ALB/NLB)</strong></li>
+  <li><strong>CloudFront Distributions</strong></li>
+  <li><strong>Route 53 Hosted Zones</strong></li>
+  <li><strong>Elastic IPs (EIP)</strong></li>
+  <li><strong>Network Interfaces (ENI)</strong></li>
+  <li><strong>API Gateway</strong></li>
+  <li><strong>WAF WebACLs</strong></li>
+  <li><strong>Global Accelerator</strong></li>
+  <li><strong>Direct Connect</strong></li>
+  <li><strong>Transit Gateway</strong></li>
+  <li><strong>NAT Gateway</strong></li>
+  <li><strong>VPN Connections</strong></li>
 </ul>
 
 ---
@@ -68,6 +80,7 @@ Script em Python para listar recursos ativos na AWS:
 <details>
 <summary>O que o script faz?</summary>
 
+
 O script irá listar, diretamente no terminal, os seguintes recursos da sua conta AWS:
 <ul>
   <li>Instâncias <strong>EC2</strong></li>
@@ -80,6 +93,18 @@ O script irá listar, diretamente no terminal, os seguintes recursos da sua cont
   <li>Usuários <strong>IAM</strong></li>
   <li>Roles <strong>IAM</strong></li>
   <li>Policies <strong>IAM</strong></li>
+  <li>Elastic Load Balancers (ELB/ALB/NLB)</li>
+  <li>CloudFront Distributions</li>
+  <li>Route 53 Hosted Zones</li>
+  <li>Elastic IPs (EIP)</li>
+  <li>Network Interfaces (ENI)</li>
+  <li>API Gateway</li>
+  <li>WAF WebACLs</li>
+  <li>Global Accelerator</li>
+  <li>Direct Connect</li>
+  <li>Transit Gateway</li>
+  <li>NAT Gateway</li>
+  <li>VPN Connections</li>
 </ul>
 
 Além disso, exporta todos os dados coletados em dois formatos:
