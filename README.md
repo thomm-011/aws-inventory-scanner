@@ -427,7 +427,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👨‍💻 Autor
 
-Desenvolvido com ❤️ para facilitar o gerenciamento e auditoria de recursos AWS.
+Desenvolvido por https://github.com/thomm-011 para facilitar o gerenciamento e auditoria de recursos AWS. ❤️
 
 ---
 
@@ -453,14 +453,6 @@ export AWS_PROFILE=seu-perfil
 # Use uma região mais próxima
 ./aws_inventory_scanner.py --region us-east-1
 ```
-
-### **Obter Ajuda**
-- 📖 Leia a documentação completa
-- 🐛 Reporte bugs via Issues
-- 💡 Sugira melhorias
-- 📧 Entre em contato para suporte
-
----
 
 **⭐ Se esta ferramenta foi útil, considere dar uma estrela no repositório!**
 
