@@ -104,7 +104,7 @@ pip install boto3
 ```bash
 # Clone ou baixe os arquivos:
 # - aws_inventory_scanner.py (arquivo principal)
-# - listar_recursos_expandido.py (engine de descoberta)
+# - listar_recursos.py (engine de descoberta)
 # - utils.py (utilitários de exportação)
 # - config.py (configurações)
 ```
@@ -310,7 +310,7 @@ REGIONS_TO_SCAN = ['us-east-1', 'us-west-2', 'eu-west-1']
 ```
 aws-inventory-scanner/
 ├── aws_inventory_scanner.py      # 🎯 Arquivo principal
-├── listar_recursos_expandido.py  # 🔍 Engine de descoberta
+├── listar_recursos.py  # 🔍 Engine de descoberta
 ├── utils.py                      # 🛠️ Utilitários de exportação
 ├── config.py                     # ⚙️ Configurações
 ├── README.md                     # 📖 Documentação
