@@ -1,0 +1,1069 @@
+{
+  "timestamp": "2025-07-26T03:28:08.774122",
+  "total_resources": 209,
+  "resources": {
+    "S3 Buckets": [
+      {
+        "id": "lambda-lab-bucket-835100579269-us-east-2",
+        "extra": "Criado: 2025-07-20 17:11 | Região: us-east-2",
+        "status": "active"
+      },
+      {
+        "id": "meu-bucket999",
+        "extra": "Criado: 2025-07-20 15:13 | Região: us-east-2",
+        "status": "active"
+      },
+      {
+        "id": "meu-bucket9999",
+        "extra": "Criado: 2025-07-20 15:25 | Região: us-east-1",
+        "status": "active"
+      }
+    ],
+    "Lambda Functions": [
+      {
+        "id": "minha-funcao-proxy-lab-MarcosJunior",
+        "extra": "python3.9 | 128MB | Modificado: 2025-07-21T02:00:26.000+0000",
+        "status": "active"
+      }
+    ],
+    "API Gateway": [
+      {
+        "id": "minha-api-proxy-lab-MarcosJunior (w9kzqkncad)",
+        "extra": "REST API | Criado: 2025-07-20 23:17",
+        "status": "active"
+      }
+    ],
+    "VPCs": [
+      {
+        "id": "vpc-083305b6afaeb1096",
+        "extra": "CIDR: 172.31.0.0/16 | Padrão",
+        "status": "available"
+      }
+    ],
+    "Security Groups": [
+      {
+        "id": "sg-030a8a31686588541",
+        "extra": "launch-wizard-20 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-06f3002b05b200573",
+        "extra": "launch-wizard-21 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-05218aa5ddd14599d",
+        "extra": "MarcosJunior3-grupo | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0502a23b75c80fc02",
+        "extra": "Marcosjunior2-grupo | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-037f1ce7579667ed6",
+        "extra": "launch-wizard-3 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-046e90e8205dd238d",
+        "extra": "launch-wizard-15 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0bffbb77b5d54a804",
+        "extra": "launch-wizard-8 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0dbc720f96629fbea",
+        "extra": "launch-wizard-2 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0c0defd320dcd826e",
+        "extra": "launch-wizard-4 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-09e16b84d588ec2f1",
+        "extra": "launch-wizard-22 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-05e6c37e47c9fdcdd",
+        "extra": "launch-wizard-7 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-09253ee481022ba45",
+        "extra": "default | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-090087dd614e86824",
+        "extra": "sg_ec2_guilhermelacerda_tf | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-001b850e75fcd25e1",
+        "extra": "launch-wizard-16 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-00be9039c10dcbc7b",
+        "extra": "launch-wizard-13 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0b4519d1280763831",
+        "extra": "launch-wizard-12 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-01d8de8c14681e9e8",
+        "extra": "launch-wizard-10 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0146203e116901cb5",
+        "extra": "launch-wizard-6 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-06b443ef6c59ad5ab",
+        "extra": "launch-wizard-19 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0eb605a836f619e16",
+        "extra": "launch-wizard-9 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0cfa5ed18876159e2",
+        "extra": "launch-wizard-18 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0c9b6162919589af4",
+        "extra": "launch-wizard-5 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-005da564a5f5dffe6",
+        "extra": "launch-wizard-11 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-072f4dc10f9c6e9ee",
+        "extra": "launch-wizard-14 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0c4a8053d98731826",
+        "extra": "Marcosjunior-grupo | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-0dfae4de476021445",
+        "extra": "launch-wizard-1 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      },
+      {
+        "id": "sg-074824f461f17e6db",
+        "extra": "launch-wizard-17 | VPC: vpc-083305b6afaeb1096",
+        "status": "active"
+      }
+    ],
+    "Key Pairs": [
+      {
+        "id": "parchave-marcos (key-096231e689f7c78e8)",
+        "extra": "Tipo: rsa | Criado: 2025-07-15 02:44",
+        "status": "active"
+      },
+      {
+        "id": "test-lambda-joaoventura (key-0a1a13ae8cf1e41f4)",
+        "extra": "Tipo: rsa | Criado: 2025-07-13 14:38",
+        "status": "active"
+      },
+      {
+        "id": "pardechaves-santosclaudinei (key-00ca169c4ae173eb6)",
+        "extra": "Tipo: rsa | Criado: 2025-07-13 01:18",
+        "status": "active"
+      },
+      {
+        "id": "Marcos98 (key-059d95947d42dbc5b)",
+        "extra": "Tipo: rsa | Criado: 2025-07-13 23:51",
+        "status": "active"
+      },
+      {
+        "id": "keypair-pbdias (key-03e08b50110f8766a)",
+        "extra": "Tipo: rsa | Criado: 2025-07-11 14:14",
+        "status": "active"
+      },
+      {
+        "id": "chave-thomas (key-006cc97e9ecf4e4ac)",
+        "extra": "Tipo: rsa | Criado: 2025-07-26 04:55",
+        "status": "active"
+      },
+      {
+        "id": "parchave-marcosjunior (key-08d3906652138814a)",
+        "extra": "Tipo: rsa | Criado: 2025-07-14 00:13",
+        "status": "active"
+      },
+      {
+        "id": "parchave-matheusclaubert (key-0bd22f61a3801de1b)",
+        "extra": "Tipo: rsa | Criado: 2025-07-12 19:05",
+        "status": "active"
+      },
+      {
+        "id": "keypair_guilhermelacerda_tf (key-030077d14e439ffcd)",
+        "extra": "Tipo: rsa | Criado: 2025-07-26 04:56",
+        "status": "active"
+      },
+      {
+        "id": "keypair-guilhermelacerda (key-0b1fcda267e182ed0)",
+        "extra": "Tipo: rsa | Criado: 2025-07-19 17:23",
+        "status": "active"
+      },
+      {
+        "id": "MarcosJunior (key-099262a587be0c595)",
+        "extra": "Tipo: rsa | Criado: 2025-07-14 00:10",
+        "status": "active"
+      }
+    ],
+    "IAM Users": [
+      {
+        "id": "aline2barroso@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "aluno@example.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "anacnunes@outlook.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "andreluiz6152@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "aninha.lops@yahoo.com.br",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "araujojjcristino@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "bragagabriel843@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "coelholucyanna@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "contatrabalhoprimeira@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "devpbdias@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "dl486307@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "drlandi@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "edloulucio@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "elizasn@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "emanuelnerys@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "fe.marx86@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "filhovaltece@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "flavianokt@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "gabrieclcosta@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "gabrielpaes99@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "gabrielss432112@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "genivaldo.serra@live.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "gui-araujobarreto@outlook.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "guithomasbr@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "i4ngela@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "iatarellieduardo@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "InstrutoraJuliana",
+        "extra": "Criado: 2025-06-27 22:14",
+        "status": "active"
+      },
+      {
+        "id": "InstrutorJoao",
+        "extra": "Criado: 2025-06-30 19:32",
+        "status": "active"
+      },
+      {
+        "id": "iolanda.barreto@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "jacarodriguez26@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "jackson.ssantos21@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "jhobertabreu1@gmail.com",
+        "extra": "Criado: 2025-07-15 13:50",
+        "status": "active"
+      },
+      {
+        "id": "joaooveentura@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "jon.marques521@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "jr@joseroberto.tec.br",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "karolwojtyla360@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "kimyunaahaha@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "lacerdagui42@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "leolima.custodio@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "lfeliix34@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "lucas2407lima@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "lucasjaud19@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "lucasrafasreis@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "ludson_ps27@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "luizrecosta@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "marccosjunior9633@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "marcelinoalbuquerque045@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "marcos98",
+        "extra": "Criado: 2025-07-12 03:06",
+        "status": "active"
+      },
+      {
+        "id": "mariacarollinag@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "mattheus.hisashi@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "rafaelor20@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "rianmp12@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "robin.ida10@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "rodrigofid@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "rpxavier.rodrigo@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "ryanbarusso@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "santos.devclaudinei@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "sdinfo.mg@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "thiagostellapontes01@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "thomas.s.cordeiro@hotmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "vinicius.kechichian@outlook.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "vinihemming@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "will.leite@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      },
+      {
+        "id": "xande10577@gmail.com",
+        "extra": "Criado: 2025-06-30 19:28",
+        "status": "active"
+      }
+    ],
+    "IAM Roles": [
+      {
+        "id": "AWSServiceRoleForAPIGateway",
+        "extra": "Criado: 2025-07-15 21:17",
+        "status": "active"
+      },
+      {
+        "id": "AWSServiceRoleForOrganizations",
+        "extra": "Criado: 2025-06-27 21:50",
+        "status": "active"
+      },
+      {
+        "id": "AWSServiceRoleForResourceExplorer",
+        "extra": "Criado: 2025-07-26 05:39",
+        "status": "active"
+      },
+      {
+        "id": "AWSServiceRoleForSSO",
+        "extra": "Criado: 2025-06-27 21:51",
+        "status": "active"
+      },
+      {
+        "id": "AWSServiceRoleForSupport",
+        "extra": "Criado: 2025-06-27 21:50",
+        "status": "active"
+      },
+      {
+        "id": "AWSServiceRoleForTrustedAdvisor",
+        "extra": "Criado: 2025-06-27 21:50",
+        "status": "active"
+      },
+      {
+        "id": "funcao-proxy-lab-matheusclaubert-role-xlqupw1g",
+        "extra": "Criado: 2025-07-21 01:42",
+        "status": "active"
+      },
+      {
+        "id": "funcao-proxy-lab-pbdias-role-uqc61lga",
+        "extra": "Criado: 2025-07-16 23:10",
+        "status": "active"
+      },
+      {
+        "id": "funcao-proxy-lab-thiagostellapontes-role-loec8ia8",
+        "extra": "Criado: 2025-07-20 18:44",
+        "status": "active"
+      },
+      {
+        "id": "lambda-aula10-role-hvcuzo85",
+        "extra": "Criado: 2025-07-23 23:01",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-carollinagurjao-role-u39pvgy2",
+        "extra": "Criado: 2025-07-25 00:20",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-gaioso-role-bl6m2o6e",
+        "extra": "Criado: 2025-07-23 20:29",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-GuilhermeLacerda-role-r0737fs2",
+        "extra": "Criado: 2025-07-25 18:11",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-GuilhermeThomas-role-ep2ewjo2",
+        "extra": "Criado: 2025-07-25 00:53",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-joao-role-luau69c6",
+        "extra": "Criado: 2025-07-24 00:13",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-RodrigoTeles-role-1hae766y",
+        "extra": "Criado: 2025-07-23 23:57",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-tainaalves-role-afjipw56",
+        "extra": "Criado: 2025-07-25 12:52",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-thiagostellapontes-role-lxkoqpp5",
+        "extra": "Criado: 2025-07-24 14:01",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-thomas-role-9rb373lg",
+        "extra": "Criado: 2025-07-26 02:28",
+        "status": "active"
+      },
+      {
+        "id": "LambdaGame-viniciushemming-role-s4ez5rq3",
+        "extra": "Criado: 2025-07-24 02:11",
+        "status": "active"
+      },
+      {
+        "id": "LambdaTerminarEC2-joseferreira-role-b5s33joq",
+        "extra": "Criado: 2025-07-20 14:21",
+        "status": "active"
+      },
+      {
+        "id": "LambdaTerminarEC2-MarcosJunior-role-r7cv88wv",
+        "extra": "Criado: 2025-07-14 04:54",
+        "status": "active"
+      },
+      {
+        "id": "LambdaTerminarEC2-Vinicius-K-role-4abq11a2",
+        "extra": "Criado: 2025-07-19 22:14",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-AnaCarolinaLopes-role-pmem9atq",
+        "extra": "Criado: 2025-07-18 23:30",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-AnaCarolinaLopes-role-v5admgb6",
+        "extra": "Criado: 2025-07-18 23:29",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-AndreSales-role-pea298dr",
+        "extra": "Criado: 2025-07-21 02:43",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-angela-role-j8elqoih",
+        "extra": "Criado: 2025-07-20 20:06",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-carollinagurjao-role-6gwpjmvr",
+        "extra": "Criado: 2025-07-20 22:55",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-carollinagurjao-role-t7vt3w91",
+        "extra": "Criado: 2025-07-20 23:57",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-cristinojunior-role-hrt1j7ea",
+        "extra": "Criado: 2025-07-20 03:57",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-davidlopesmiranda-role-wp522m6l",
+        "extra": "Criado: 2025-07-20 05:37",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-eduardo-junior-role-tulmhgtd",
+        "extra": "Criado: 2025-07-17 23:51",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-eduardolourenco-role-qsgrrsei",
+        "extra": "Criado: 2025-07-15 23:08",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-eduardolucio-role-0g98laio",
+        "extra": "Criado: 2025-07-20 21:56",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-elizabethnascimento-role-8gwad2zh",
+        "extra": "Criado: 2025-07-20 23:45",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-elizabethNascimento-role-hcsjitge",
+        "extra": "Criado: 2025-07-20 14:18",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-elizabethNascimento-role-igaghnwt",
+        "extra": "Criado: 2025-07-20 22:05",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-emanuelnerys-role-y0jg48jk",
+        "extra": "Criado: 2025-07-19 15:31",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-fernandosmarques-role-z4ulpx31",
+        "extra": "Criado: 2025-07-18 18:19",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-GabrielBraga-role-h5ti4jzy",
+        "extra": "Criado: 2025-07-19 17:12",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-GabrielBraga-role-ivn9017w",
+        "extra": "Criado: 2025-07-20 15:10",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-GabrielCosta-role-7pm7jr3m",
+        "extra": "Criado: 2025-07-20 22:16",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-gabrielpaes-role-a3urkm8l",
+        "extra": "Criado: 2025-07-19 00:25",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-gabrielsantos-role-5v9fqkop",
+        "extra": "Criado: 2025-07-20 23:09",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-gaioso-role-pulbqdmr",
+        "extra": "Criado: 2025-07-15 23:07",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-gaioso-role-urfbb99q",
+        "extra": "Criado: 2025-07-15 21:11",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-GenivaldoSerra-role-xa2uvxxy",
+        "extra": "Criado: 2025-07-18 16:34",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guiaraujo-role-7i79g1od",
+        "extra": "Criado: 2025-07-18 18:21",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guilhermelacerda-role-wqdk5yf6",
+        "extra": "Criado: 2025-07-19 22:51",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guilhermethomas-role-17e613ec",
+        "extra": "Criado: 2025-07-16 19:57",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guilhermethomas-role-7tew97b3",
+        "extra": "Criado: 2025-07-17 02:35",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guilhermethomas-role-bcqq68ix",
+        "extra": "Criado: 2025-07-16 19:58",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-guilhermethomas-role-ecuxbund",
+        "extra": "Criado: 2025-07-17 01:41",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-iolandabar-role-ajv6vg1s",
+        "extra": "Criado: 2025-07-20 10:16",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-iolandabar-role-mzck0j0s",
+        "extra": "Criado: 2025-07-20 12:31",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-iolandabar-role-r2ih7233",
+        "extra": "Criado: 2025-07-20 12:27",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-iolandabar-role-sau7684y",
+        "extra": "Criado: 2025-07-20 12:19",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-iolandabar2-role-sknemev5",
+        "extra": "Criado: 2025-07-20 11:51",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-janainameyer-role-3q3o34az",
+        "extra": "Criado: 2025-07-15 22:55",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-jhobertabreu-role-bzgc2fm8",
+        "extra": "Criado: 2025-07-19 18:48",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joao-role-76jp31hk",
+        "extra": "Criado: 2025-07-20 22:35",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joaogaioso-role-j8wfdxbq",
+        "extra": "Criado: 2025-07-15 23:52",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joaoventura-role-btonpq38",
+        "extra": "Criado: 2025-07-16 20:51",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joaoventura-role-ffhjcvtp",
+        "extra": "Criado: 2025-07-16 20:56",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joseferreira-role-7ztpy84t",
+        "extra": "Criado: 2025-07-20 14:55",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joseferreira-role-f981jp10",
+        "extra": "Criado: 2025-07-20 14:53",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joseferreira-role-mn100rz1",
+        "extra": "Criado: 2025-07-20 14:10",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joserobertoferreira-role-e6w7fu0o",
+        "extra": "Criado: 2025-07-20 15:09",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-joseRodriguez-role-aw36eutf",
+        "extra": "Criado: 2025-07-19 23:27",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-leandrofelix-role-0fkzfujx",
+        "extra": "Criado: 2025-07-20 07:17",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-lucasjaud-role-whb59k4t",
+        "extra": "Criado: 2025-07-22 20:49",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-lucaslima-role-cghw6cy9",
+        "extra": "Criado: 2025-07-16 12:46",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-lucasreis-role-qy5mgprf",
+        "extra": "Criado: 2025-07-17 14:39",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-lucyannacoelho-role-a6wmridv",
+        "extra": "Criado: 2025-07-15 23:08",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-lucyannacoelho-role-b1javzqu",
+        "extra": "Criado: 2025-07-15 23:10",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-MarcelinoAlbuquerque-role-l4clm6se",
+        "extra": "Criado: 2025-07-21 16:11",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-MarcelinoAlbuquerque-role-newhguvl",
+        "extra": "Criado: 2025-07-18 17:45",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-MarcosJunior-role-c8fqccrv",
+        "extra": "Criado: 2025-07-21 01:42",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-rafael-rosario-role-7z4xs75x",
+        "extra": "Criado: 2025-07-16 11:46",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-rian-manoel-role-8seforfx",
+        "extra": "Criado: 2025-07-16 19:55",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-rodrigoteles-role-52017eln",
+        "extra": "Criado: 2025-07-15 23:03",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-RodrigoXavier-role-ohw4il39",
+        "extra": "Criado: 2025-07-20 20:13",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-ryanbarusso-role-jhgdh1vd",
+        "extra": "Criado: 2025-07-20 02:43",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-santosclaudinei-role-j3jvsml8",
+        "extra": "Criado: 2025-07-21 00:26",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-santosclaudinei-role-s5irc9sh",
+        "extra": "Criado: 2025-07-20 19:20",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-thiagostellapontes-role-f84t0yoz",
+        "extra": "Criado: 2025-07-16 14:36",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-thomas-role-uuaa5bro",
+        "extra": "Criado: 2025-07-20 02:43",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-valtece-role-5gvr661o",
+        "extra": "Criado: 2025-07-19 21:22",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-viniciushemming-role-rq86intt",
+        "extra": "Criado: 2025-07-16 17:46",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-lab-ViniciusK-role-qejh8y0l",
+        "extra": "Criado: 2025-07-20 00:02",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-labjoaoventura-role-5c62i31d",
+        "extra": "Criado: 2025-07-16 19:40",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-labjoaoventura-role-lv4l4eoo",
+        "extra": "Criado: 2025-07-16 20:53",
+        "status": "active"
+      },
+      {
+        "id": "minha-funcao-proxy-labtainaalves-role-r04j4d1d",
+        "extra": "Criado: 2025-07-17 20:52",
+        "status": "active"
+      },
+      {
+        "id": "minhafuncaoproxylab-williamascenso-role-xcvtl5hj",
+        "extra": "Criado: 2025-07-20 13:15",
+        "status": "active"
+      },
+      {
+        "id": "My-Proxy-Custodio-role-wmgr1iyx",
+        "extra": "Criado: 2025-07-20 19:01",
+        "status": "active"
+      },
+      {
+        "id": "OrganizationAccountAccessRole",
+        "extra": "Criado: 2025-06-27 21:50",
+        "status": "active"
+      },
+      {
+        "id": "PoliticaTerminarEC2-RodrigoTeles",
+        "extra": "Criado: 2025-07-16 00:54",
+        "status": "active"
+      },
+      {
+        "id": "ResourceCleanerLambdaRole",
+        "extra": "Criado: 2025-06-30 19:21",
+        "status": "active"
+      },
+      {
+        "id": "role-terminar-ec2-joaoventura",
+        "extra": "Criado: 2025-07-13 14:23",
+        "status": "active"
+      },
+      {
+        "id": "RoleTerminarEC2-elizabethNascimento",
+        "extra": "Criado: 2025-07-20 11:52",
+        "status": "active"
+      }
+    ],
+    "Internet Gateways": [
+      {
+        "id": "igw-0dcf0e2e752bfc189",
+        "extra": "Anexado à VPC: vpc-083305b6afaeb1096",
+        "status": "available"
+      }
+    ]
+  }
+}
