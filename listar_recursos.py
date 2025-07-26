@@ -1,7 +1,19 @@
 
+
 import boto3
 import json
 import csv
+
+
+# Detectar região padrão
+session = boto3.Session()
+region = session.region_name or 'us-east-1'
+
+# Função utilitária para obter todas as regiões disponíveis para um serviço
+def get_all_regions(service_name):
+    ec2 = boto3.client('ec2', region_name=region)
+    regions = ec2.describe_regions(AllRegions=True)
+    return [r['RegionName'] for r in regions['Regions'] if r.get('OptInStatus', 'opt-in-not-required') in ['opt-in-not-required', 'opted-in']]
 
 all_resources = {}
 
@@ -11,13 +23,19 @@ def add_resource(service, resource_id, extra=""):
     all_resources[service].append(f"{resource_id} {extra}".strip())
 
 def list_ec2():
-    ec2 = boto3.client('ec2')
-    instances = ec2.describe_instances()
-    for res in instances['Reservations']:
-        for inst in res['Instances']:
-            instance_id = inst['InstanceId']
-            state = inst.get('State', {}).get('Name', '')
-            add_resource('ec2', instance_id, state)
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        print(f"[DEBUG] Buscando EC2 em {reg}")
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            instances = ec2.describe_instances()
+            for res in instances['Reservations']:
+                for inst in res['Instances']:
+                    instance_id = inst['InstanceId']
+                    state = inst.get('State', {}).get('Name', '')
+                    add_resource('ec2', f"{instance_id} ({reg})", state)
+        except Exception as e:
+            print(f"[ERRO] EC2 {reg}: {e}")
 def list_s3():
     s3 = boto3.client('s3')
     buckets = s3.list_buckets()
@@ -31,34 +49,58 @@ def list_lambda():
         add_resource('lambda', f['FunctionName'])
 
 def list_rds():
-    rds = boto3.client('rds')
-    instances = rds.describe_db_instances()
-    for db in instances['DBInstances']:
-        add_resource('rds', db['DBInstanceIdentifier'])
+    regions = get_all_regions('rds')
+    for reg in regions:
+        print(f"[DEBUG] Buscando RDS em {reg}")
+        rds = boto3.client('rds', region_name=reg)
+        try:
+            instances = rds.describe_db_instances()
+            for db in instances['DBInstances']:
+                add_resource('rds', f"{db['DBInstanceIdentifier']} ({reg})")
+        except Exception as e:
+            print(f"[ERRO] RDS {reg}: {e}")
 
 def list_vpcs():
-    ec2 = boto3.client('ec2')
-    vpcs = ec2.describe_vpcs()
-    for vpc in vpcs['Vpcs']:
-        vpc_id = vpc['VpcId']
-        cidr = vpc.get('CidrBlock', '')
-        add_resource('vpc', vpc_id, cidr)
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        print(f"[DEBUG] Buscando VPC em {reg}")
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            vpcs = ec2.describe_vpcs()
+            for vpc in vpcs['Vpcs']:
+                vpc_id = vpc['VpcId']
+                cidr = vpc.get('CidrBlock', '')
+                add_resource('vpc', f"{vpc_id} ({reg})", cidr)
+        except Exception as e:
+            print(f"[ERRO] VPC {reg}: {e}")
 
 def list_subnets():
-    ec2 = boto3.client('ec2')
-    subnets = ec2.describe_subnets()
-    for subnet in subnets['Subnets']:
-        subnet_id = subnet['SubnetId']
-        cidr = subnet.get('CidrBlock', '')
-        add_resource('subnet', subnet_id, cidr)
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        print(f"[DEBUG] Buscando Subnets em {reg}")
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            subnets = ec2.describe_subnets()
+            for subnet in subnets['Subnets']:
+                subnet_id = subnet['SubnetId']
+                cidr = subnet.get('CidrBlock', '')
+                add_resource('subnet', f"{subnet_id} ({reg})", cidr)
+        except Exception as e:
+            print(f"[ERRO] Subnet {reg}: {e}")
 
 def list_security_groups():
-    ec2 = boto3.client('ec2')
-    sgs = ec2.describe_security_groups()
-    for sg in sgs['SecurityGroups']:
-        sg_id = sg['GroupId']
-        name = sg.get('GroupName', '')
-        add_resource('security_group', sg_id, name)
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        print(f"[DEBUG] Buscando Security Groups em {reg}")
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            sgs = ec2.describe_security_groups()
+            for sg in sgs['SecurityGroups']:
+                sg_id = sg['GroupId']
+                name = sg.get('GroupName', '')
+                add_resource('security_group', f"{sg_id} ({reg})", name)
+        except Exception as e:
+            print(f"[ERRO] Security Group {reg}: {e}")
 
 def list_iam_users():
     iam = boto3.client('iam')
@@ -81,16 +123,26 @@ def list_iam_policies():
             add_resource('iam_policy', policy['PolicyName'])
 
 def list_elbs():
-    elb = boto3.client('elb')
-    lbs = elb.describe_load_balancers()
-    for lb in lbs['LoadBalancerDescriptions']:
-        add_resource('elb', lb['LoadBalancerName'], lb.get('DNSName', ''))
+    regions = get_all_regions('elb')
+    for reg in regions:
+        elb = boto3.client('elb', region_name=reg)
+        try:
+            lbs = elb.describe_load_balancers()
+            for lb in lbs['LoadBalancerDescriptions']:
+                add_resource('elb', f"{lb['LoadBalancerName']} ({reg})", lb.get('DNSName', ''))
+        except Exception:
+            pass
 
 def list_elbv2():
-    elbv2 = boto3.client('elbv2')
-    lbs = elbv2.describe_load_balancers()
-    for lb in lbs['LoadBalancers']:
-        add_resource('elbv2', lb['LoadBalancerName'], lb.get('DNSName', ''))
+    regions = get_all_regions('elbv2')
+    for reg in regions:
+        elbv2 = boto3.client('elbv2', region_name=reg)
+        try:
+            lbs = elbv2.describe_load_balancers()
+            for lb in lbs['LoadBalancers']:
+                add_resource('elbv2', f"{lb['LoadBalancerName']} ({reg})", lb.get('DNSName', ''))
+        except Exception:
+            pass
 
 def list_cloudfront():
     cf = boto3.client('cloudfront')
@@ -105,22 +157,42 @@ def list_route53_zones():
         add_resource('route53_zone', zone['Id'], zone['Name'])
 
 def list_eips():
-    ec2 = boto3.client('ec2')
-    eips = ec2.describe_addresses()
-    for eip in eips['Addresses']:
-        add_resource('eip', eip.get('PublicIp', ''), eip.get('InstanceId', ''))
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            eips = ec2.describe_addresses()
+            for eip in eips['Addresses']:
+                add_resource('eip', f"{eip.get('PublicIp', '')} ({reg})", eip.get('InstanceId', ''))
+        except Exception:
+            pass
 
 def list_enis():
-    ec2 = boto3.client('ec2')
-    enis = ec2.describe_network_interfaces()
-    for eni in enis['NetworkInterfaces']:
-        add_resource('eni', eni['NetworkInterfaceId'], eni.get('Description', ''))
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            enis = ec2.describe_network_interfaces()
+            for eni in enis['NetworkInterfaces']:
+                add_resource('eni', f"{eni['NetworkInterfaceId']} ({reg})", eni.get('Description', ''))
+        except Exception:
+            pass
 
 def list_api_gateways():
-    apigw = boto3.client('apigateway')
-    apis = apigw.get_rest_apis()
-    for api in apis.get('items', []):
-        add_resource('apigateway', api['id'], api.get('name', ''))
+    regions = get_all_regions('apigateway')
+    for reg in regions:
+        apigw = boto3.client('apigateway', region_name=reg)
+        position = None
+        while True:
+            if position:
+                apis = apigw.get_rest_apis(position=position)
+            else:
+                apis = apigw.get_rest_apis()
+            for api in apis.get('items', []):
+                add_resource('apigateway', f"{api['id']} ({reg})", api.get('name', ''))
+            position = apis.get('position')
+            if not position:
+                break
 
 def list_waf_webacls():
     waf = boto3.client('waf')
@@ -150,31 +222,37 @@ def list_direct_connect():
         pass
 
 def list_transit_gateways():
-    ec2 = boto3.client('ec2')
-    try:
-        tgs = ec2.describe_transit_gateways()
-        for tg in tgs.get('TransitGateways', []):
-            add_resource('transit_gateway', tg['TransitGatewayId'], tg.get('Description', ''))
-    except Exception:
-        pass
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            tgs = ec2.describe_transit_gateways()
+            for tg in tgs.get('TransitGateways', []):
+                add_resource('transit_gateway', f"{tg['TransitGatewayId']} ({reg})", tg.get('Description', ''))
+        except Exception:
+            pass
 
 def list_nat_gateways():
-    ec2 = boto3.client('ec2')
-    try:
-        ngws = ec2.describe_nat_gateways()
-        for ngw in ngws.get('NatGateways', []):
-            add_resource('nat_gateway', ngw['NatGatewayId'], ngw.get('State', ''))
-    except Exception:
-        pass
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            ngws = ec2.describe_nat_gateways()
+            for ngw in ngws.get('NatGateways', []):
+                add_resource('nat_gateway', f"{ngw['NatGatewayId']} ({reg})", ngw.get('State', ''))
+        except Exception:
+            pass
 
 def list_vpn_connections():
-    ec2 = boto3.client('ec2')
-    try:
-        vpns = ec2.describe_vpn_connections()
-        for vpn in vpns.get('VpnConnections', []):
-            add_resource('vpn_connection', vpn['VpnConnectionId'], vpn.get('State', ''))
-    except Exception:
-        pass
+    regions = get_all_regions('ec2')
+    for reg in regions:
+        ec2 = boto3.client('ec2', region_name=reg)
+        try:
+            vpns = ec2.describe_vpn_connections()
+            for vpn in vpns.get('VpnConnections', []):
+                add_resource('vpn_connection', f"{vpn['VpnConnectionId']} ({reg})", vpn.get('State', ''))
+        except Exception:
+            pass
 
 # Não inclua chaves ou segredos no código! Use aws configure para definir suas credenciais.
 
