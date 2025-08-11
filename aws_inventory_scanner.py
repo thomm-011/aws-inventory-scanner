@@ -7,7 +7,7 @@ Version: 2.0.0
 
 import argparse
 import sys
-from listar_recursos_expandido import AWSResourceLister
+from listar_recursos import AWSResourceLister
 from utils import AWSResourceExporter, AWSResourceAnalyzer, create_directory_structure, load_previous_scan, compare_scans, print_changes_report
 from config import DEFAULT_REGION, SERVICES_CONFIG, OUTPUT_CONFIG
 
