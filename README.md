@@ -1,462 +1,77 @@
-# 🔍 AWS Inventory Scanner v2.0
+# AWS Inventory Scanner
 
-Uma ferramenta Python completa e profissional para descobrir, auditar e analisar todos os recursos AWS da sua conta de forma organizada e visual.
+A Python CLI for discovering AWS resources, exporting an inventory, and comparing scans.
 
-## 📋 Índice
+![Actual report renderer with synthetic resources; no AWS account queried](docs/cli-demo.svg)
 
-- [Características](#-características)
-- [Novidades v2.0](#-novidades-v20)
-- [Recursos Suportados](#-recursos-suportados)
-- [Instalação](#-instalação)
-- [Uso](#-uso)
-- [Exemplos de Uso](#-exemplos-de-uso)
-- [Exportação de Dados](#-exportação-de-dados)
-- [Análise de Recursos](#-análise-de-recursos)
-- [Configuração](#-configuração)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Contribuição](#-contribuição)
+The preview uses the project's actual output renderer with synthetic resource names. It is an offline demonstration, not data from an AWS account.
 
-## ✨ Características
+## What it does
 
-### 🎯 **Descoberta Completa**
-- **25+ serviços AWS** suportados
-- **Resumo executivo** com overview rápido
-- **Detalhamento completo** com informações técnicas
-- **Status em tempo real** de cada recurso
+- Discovers resources across services such as EC2, S3, Lambda, RDS, networking, and IAM.
+- Prints a summary and resource details.
+- Exports JSON, CSV, and HTML reports.
+- Compares an inventory with a previously exported JSON file.
+- Provides basic checks for potentially unused resources and security-related observations.
 
-### 🎨 **Interface Rica**
-- **Emojis e formatação colorida** para fácil leitura
-- **Indicadores visuais de status** (🟢 ativo, 🔴 parado, ⚫ terminado)
-- **Contadores e estatísticas** detalhadas
-- **Timestamps** de verificação
+Terminal icons in the preview are normalized for portable rendering.
 
-### 📊 **Exportação Múltipla**
-- **JSON** para integração com outras ferramentas
-- **CSV** para análise em planilhas
-- **HTML** para relatórios visuais profissionais
+## Installation
 
-### 🔍 **Análise Inteligente**
-- **Detecção de recursos não utilizados**
-- **Análise de potencial de custos**
-- **Comparação entre scans** (diff)
-- **Relatórios de segurança básicos**
+Python 3.11 or newer is recommended. Install the dependencies in a virtual environment:
 
-### 🛡️ **Robustez**
-- **Tratamento de erros** avançado
-- **Permissões granulares** - continua mesmo sem acesso total
-- **Multi-região** configurável
-- **Filtros de serviços** personalizáveis
-
-## 🆕 Novidades v2.0
-
-### 🚀 **Novos Recursos AWS Suportados**
-- **CloudFormation Stacks** - Infraestrutura como código
-- **SNS Topics** - Notificações
-- **SQS Queues** - Filas de mensagens
-- **CloudWatch Alarms** - Monitoramento
-- **Route53 Hosted Zones** - DNS
-- **Elastic Load Balancers** - Balanceamento de carga
-- **Auto Scaling Groups** - Escalabilidade automática
-- **NAT Gateways** - Conectividade de rede
-- **Internet Gateways** - Acesso à internet
-- **ECR Repositories** - Registro de containers
-- **ECS Clusters** - Orquestração de containers
-- **Secrets Manager** - Gerenciamento de segredos
-
-### 📈 **Funcionalidades Avançadas**
-- **Linha de comando completa** com argumentos
-- **Sistema de configuração** flexível
-- **Exportação em múltiplos formatos**
-- **Análise de custos e recursos não utilizados**
-- **Comparação entre scans** para detectar mudanças
-- **Filtros de serviços** personalizáveis
-
-## 📋 Recursos Suportados
-
-| Categoria | Serviços | Informações Coletadas |
-|-----------|----------|----------------------|
-| **💻 Compute** | EC2 Instances, Auto Scaling Groups, Elastic IPs | Tipo, status, nome, data de criação, configurações |
-| **💾 Storage** | S3 Buckets, EBS Volumes | Região, tamanho, anexos, datas |
-| **⚡ Serverless** | Lambda Functions | Runtime, memória, última modificação |
-| **🗄️ Database** | RDS Instances, DynamoDB Tables | Engine, classe, status, contagem de itens |
-| **🌐 Networking** | VPCs, Security Groups, NAT/Internet Gateways, Load Balancers | CIDR, regras, anexos, configurações |
-| **🔐 Security** | IAM Users/Roles, Key Pairs, Secrets Manager | Permissões, datas de criação, último acesso |
-| **📡 Application** | API Gateway, SNS Topics, SQS Queues | Tipo, configurações, estatísticas |
-| **🚀 DevOps** | CloudFormation Stacks, ECR Repositories, ECS Clusters | Status, descrições, contagens |
-| **📊 Monitoring** | CloudWatch Alarms | Estado, métricas, namespaces |
-| **🌍 DNS** | Route53 Hosted Zones | Tipo (pública/privada), contagem de records |
-
-## 📦 Instalação
-
-### 1. **Pré-requisitos**
 ```bash
-# Python 3.6+
-python3 --version
-
-# AWS CLI configurado
-aws configure
-
-# Dependências Python
-pip install boto3
+git clone https://github.com/thomm-011/aws-inventory-scanner.git
+cd aws-inventory-scanner
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python aws_inventory_scanner.py --help
+python aws_inventory_scanner.py --list-services
 ```
 
-### 2. **Download dos Arquivos**
+The activation command above is for macOS/Linux. On Windows PowerShell, use `.venv\Scripts\Activate.ps1`.
+
+## AWS authentication
+
+Configure credentials outside the repository using the standard Boto3 credential chain. For a configured named profile, for example:
+
 ```bash
-# Clone ou baixe os arquivos:
-# - aws_inventory_scanner.py (arquivo principal)
-# - listar_recursos.py (engine de descoberta)
-# - utils.py (utilitários de exportação)
-# - config.py (configurações)
+export AWS_PROFILE=portfolio
+python aws_inventory_scanner.py --region us-east-1 --summary-only
 ```
 
-### 3. **Configuração**
+Use an identity authorized for the list/describe operations used by the scanner. Missing service permissions can produce incomplete results. Some services are global even when a region is selected.
+
+## Usage
+
 ```bash
-# Torne o arquivo principal executável
-chmod +x aws_inventory_scanner.py
+# Inventory and all supported export formats
+python aws_inventory_scanner.py --region us-east-1 --export-all
 
-# Configure suas credenciais AWS
-aws configure
+# Add the built-in resource analysis
+python aws_inventory_scanner.py --region us-east-1 --analyze
+
+# Compare against an existing JSON export; replace the example path
+python aws_inventory_scanner.py --region us-east-1 --compare exports/previous.json
 ```
 
-## 🚀 Uso
+By default, reports are written to `exports/`. The JSON export contains a timestamp, resource count, and resources grouped by service. Create a custom output directory before passing it with `--output-dir`.
 
-### **Uso Básico**
-```bash
-# Scan completo com configurações padrão
-python3 aws_inventory_scanner.py
+## Current limitations
 
-# Ou se executável
-./aws_inventory_scanner.py
-```
+- The CLI parses `--profile`, `--services`, `--exclude-services`, and `--no-emojis`, but those options are not fully connected to the listing/output implementation. Use `AWS_PROFILE` for named-profile selection; do not rely on the service flags to restrict a scan.
+- Checks for unused resources and potential cost issues are heuristics, not billing estimates or a complete security audit.
+- A scan reflects the selected region, service APIs, and available permissions. It is not a complete multi-account inventory.
+- Exports can contain account and resource information. Review them before sharing.
 
-### **Opções de Região**
-```bash
-# Scan em região específica
-./aws_inventory_scanner.py --region us-west-2
+## Code map
 
-# Usar perfil AWS específico
-./aws_inventory_scanner.py --profile production
-```
+- `aws_inventory_scanner.py`: command-line entry point.
+- `listar_recursos.py`: service discovery and console output.
+- `utils.py`: export, analysis, and comparison helpers.
+- `config.py`: defaults and service configuration.
 
-### **Filtros de Serviços**
-```bash
-# Scan apenas serviços específicos
-./aws_inventory_scanner.py --services ec2 s3 lambda
+## Author
 
-# Excluir serviços específicos
-./aws_inventory_scanner.py --exclude-services iam route53
-
-# Listar todos os serviços disponíveis
-./aws_inventory_scanner.py --list-services
-```
-
-### **Opções de Saída**
-```bash
-# Apenas resumo executivo
-./aws_inventory_scanner.py --summary-only
-
-# Sem emojis (para scripts)
-./aws_inventory_scanner.py --no-emojis
-```
-
-## 📊 Exemplos de Uso
-
-### **1. Scan Completo com Análise**
-```bash
-./aws_inventory_scanner.py --analyze --export-all
-```
-
-### **2. Monitoramento de Mudanças**
-```bash
-# Primeiro scan
-./aws_inventory_scanner.py --export-json
-
-# Scan posterior comparando
-./aws_inventory_scanner.py --compare exports/aws_resources_20250726_120000.json
-```
-
-### **3. Auditoria de Custos**
-```bash
-./aws_inventory_scanner.py --services ec2 rds ebs nat_gateways --analyze
-```
-
-### **4. Relatório Executivo**
-```bash
-./aws_inventory_scanner.py --summary-only --export-html --output-dir reports
-```
-
-## 📤 Exportação de Dados
-
-### **Formatos Suportados**
-
-#### **JSON** - Para integração
-```bash
-./aws_inventory_scanner.py --export-json
-```
-```json
-{
-  "timestamp": "2025-07-26T06:30:00",
-  "total_resources": 150,
-  "resources": {
-    "EC2 Instances": [
-      {
-        "id": "i-1234567890abcdef0",
-        "extra": "t2.micro | WebServer | 2025-07-26 05:00",
-        "status": "running"
-      }
-    ]
-  }
-}
-```
-
-#### **CSV** - Para planilhas
-```bash
-./aws_inventory_scanner.py --export-csv
-```
-
-#### **HTML** - Relatório visual
-```bash
-./aws_inventory_scanner.py --export-html
-```
-
-### **Exportação Múltipla**
-```bash
-# Todos os formatos de uma vez
-./aws_inventory_scanner.py --export-all --output-dir reports
-```
-
-## 🔍 Análise de Recursos
-
-### **Análise de Custos**
-```bash
-./aws_inventory_scanner.py --analyze
-```
-
-**Saída:**
-```
-📈 ANÁLISE DE RECURSOS AWS
-============================================================
-
-💰 Recursos que geram custos: 45
-  • EC2 Instances: 5 recursos
-  • RDS Instances: 2 recursos
-  • NAT Gateways: 3 recursos
-  • Load Balancers: 4 recursos
-
-🗑️  Recursos potencialmente não utilizados: 12
-  • Unattached Volumes: 8 recursos
-  • Unassociated Eips: 4 recursos
-```
-
-### **Comparação de Scans**
-```bash
-./aws_inventory_scanner.py --compare previous_scan.json
-```
-
-**Saída:**
-```
-🔄 RELATÓRIO DE MUDANÇAS
-============================================================
-
-✅ Recursos adicionados: 3
-  • EC2 Instances: 2 recursos
-    - i-new1234567890
-    - i-new0987654321
-  • S3 Buckets: 1 recursos
-    - new-backup-bucket
-
-❌ Recursos removidos: 1
-  • Lambda Functions: 1 recursos
-    - old-cleanup-function
-```
-
-## ⚙️ Configuração
-
-### **Arquivo config.py**
-```python
-# Região padrão
-DEFAULT_REGION = 'us-east-1'
-
-# Serviços para escanear
-SERVICES_CONFIG = {
-    'ec2_instances': True,
-    's3_buckets': True,
-    'lambda_functions': True,
-    # ... outros serviços
-}
-
-# Configurações de saída
-OUTPUT_CONFIG = {
-    'show_executive_summary': True,
-    'show_detailed_results': True,
-    'use_emojis': True,
-}
-```
-
-### **Personalização**
-```python
-# Desabilitar serviços específicos
-SERVICES_CONFIG['iam_resources'] = False
-
-# Alterar região padrão
-DEFAULT_REGION = 'eu-west-1'
-
-# Múltiplas regiões
-REGIONS_TO_SCAN = ['us-east-1', 'us-west-2', 'eu-west-1']
-```
-
-## 📁 Estrutura do Projeto
-
-```
-aws-inventory-scanner/
-├── aws_inventory_scanner.py      # 🎯 Arquivo principal
-├── listar_recursos.py  # 🔍 Engine de descoberta
-├── utils.py                      # 🛠️ Utilitários de exportação
-├── config.py                     # ⚙️ Configurações
-├── README.md                     # 📖 Documentação
-├── exports/                      # 📤 Arquivos exportados
-│   ├── aws_resources_*.json
-│   ├── aws_resources_*.csv
-│   └── aws_resources_*.html
-└── reports/                      # 📊 Relatórios
-    └── analysis_*.html
-```
-
-## 🔒 Permissões IAM Necessárias
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:Describe*",
-                "s3:ListAllMyBuckets",
-                "s3:GetBucketLocation",
-                "lambda:ListFunctions",
-                "rds:Describe*",
-                "dynamodb:ListTables",
-                "dynamodb:DescribeTable",
-                "apigateway:GET",
-                "iam:List*",
-                "cloudformation:DescribeStacks",
-                "sns:ListTopics",
-                "sns:GetTopicAttributes",
-                "sqs:ListQueues",
-                "sqs:GetQueueAttributes",
-                "cloudwatch:DescribeAlarms",
-                "route53:ListHostedZones",
-                "elasticloadbalancing:Describe*",
-                "autoscaling:Describe*",
-                "ecr:DescribeRepositories",
-                "ecr:DescribeImages",
-                "ecs:ListClusters",
-                "ecs:DescribeClusters",
-                "secretsmanager:ListSecrets"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-## 🚀 Funcionalidades Avançadas
-
-### **1. Automação com Cron**
-```bash
-# Scan diário às 6h
-0 6 * * * /path/to/aws_inventory_scanner.py --export-json --output-dir /var/log/aws-scans
-```
-
-### **2. Integração com CI/CD**
-```yaml
-# GitHub Actions example
-- name: AWS Resource Scan
-  run: |
-    python3 aws_inventory_scanner.py --export-json --compare previous.json
-```
-
-### **3. Alertas de Mudanças**
-```bash
-# Script para alertas
-./aws_inventory_scanner.py --compare last_scan.json | grep "Recursos adicionados\|Recursos removidos"
-```
-
-## 🤝 Contribuição
-
-### **Como Contribuir**
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/NovoServico`)
-3. Commit suas mudanças (`git commit -m 'Add: Suporte ao EKS'`)
-4. Push para a branch (`git push origin feature/NovoServico`)
-5. Abra um Pull Request
-
-### **Ideias para Contribuição**
-- [ ] **Novos Serviços**: EKS, Fargate, ElastiCache, Redshift
-- [ ] **Multi-região**: Scan automático em múltiplas regiões
-- [ ] **Dashboard Web**: Interface web com Flask/Django
-- [ ] **Alertas**: Integração com Slack/Teams
-- [ ] **Métricas**: Integração com Prometheus/Grafana
-- [ ] **Custos**: Integração com AWS Cost Explorer
-- [ ] **Compliance**: Verificações de conformidade
-
-## 📈 Roadmap
-
-### **v2.1 (Próxima)**
-- [ ] Suporte a EKS e Fargate
-- [ ] Scan multi-região automático
-- [ ] Dashboard web básico
-- [ ] Integração com AWS Cost Explorer
-
-### **v2.2**
-- [ ] Alertas via Slack/Teams
-- [ ] Análise de compliance
-- [ ] Exportação para Prometheus
-- [ ] API REST
-
-### **v3.0**
-- [ ] Interface web completa
-- [ ] Análise de tendências
-- [ ] Machine Learning para otimizações
-- [ ] Integração com Terraform
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 👨‍💻 Autor
-
-Desenvolvido por https://github.com/thomm-011 para facilitar o gerenciamento e auditoria de recursos AWS. ❤️
-
----
-
-## 🆘 Suporte
-
-### **Problemas Comuns**
-
-**1. Erro de Credenciais**
-```bash
-aws configure
-# ou
-export AWS_PROFILE=seu-perfil
-```
-
-**2. Permissões Insuficientes**
-```bash
-# A ferramenta continua funcionando, apenas avisa sobre serviços sem acesso
-⚠️  Sem permissão para acessar ECS Clusters
-```
-
-**3. Timeout em Regiões**
-```bash
-# Use uma região mais próxima
-./aws_inventory_scanner.py --region us-east-1
-```
-
-**⭐ Se esta ferramenta foi útil, considere dar uma estrela no repositório!**
-
-**🔗 Links Úteis:**
-- [AWS CLI Documentation](https://docs.aws.amazon.com/cli/)
-- [Boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
+[Thomas Silva Cordeiro](https://thomm-011.github.io/) · [LinkedIn](https://www.linkedin.com/in/thomas-s-923082184/)
